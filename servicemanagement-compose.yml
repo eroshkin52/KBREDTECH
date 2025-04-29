@@ -22,50 +22,46 @@ services:
       ATL_DB_TYPE: 'postgres72'
       ATL_JDBC_URL: 'jdbc:postgresql://db-jira:5432/jira'
       ATL_JDBC_USER: 'jira'
-      ATL_JDBC_PASSWORD: '0Lip%j5x>ELVdt8V47l2'
+      ATL_JDBC_PASSWORD: 'Ljp%j5x>ELVdt8V47L2'
       #   If Use Reverse Proxy Uncomment this Line
       #ATL_TOMCAT_SCHEME: 'https'
       #ATL_TOMCAT_SECURE: 'true'
       #ATL_PROXY_PORT: '443'
       #ATL_PROXY_NAME: 'jira.my-site.com'
       JAVA_OPTS: '-javaagent:/atlassian-agent.jar'
-      JVM_MINIMUM_MEMORY: 1024m
-      JVM_MAXIMUM_MEMORY: 4096m
+      JVM_MINIMUM_MEMORY: 512m
+      JVM_MAXIMUM_MEMORY: 2048m
     volumes:
       - servicemanagement-vol:/var/atlassian/application-data/jira
-      - ./agent/atlassian-agent.jar:/atlassian-agent.jar:ro
+      - ./agent/atlassian-agent.bak:/atlassian-agent.jar:ro
     networks:
-      - my-net
+      my-net:
     depends_on:
-      - postgresql-jira
+      - postgressql-jira
     ports:
-      - 8081:8080
+      - 8080:8080
 
-  postgresql-jira:
-    image: postgres:13
+  postgressql-servicemanagement:
+    image: postgres
     restart: always
-    container_name: postgresql-jira
-    hostname: postgresql-servicemanagement
+    container_name: postgressql-servicemanagement
+    hostname: postgressql-servicemanagement
     environment:
-      POSTGRES_DB: jira
       POSTGRES_USER: jira
       POSTGRES_PASSWORD: '0Ljp%j5x>ELVdt8V47L2'
     volumes:
-      - postgresql-data:/var/lib/postgresql/data
+      - postgresql-data-servicemanagement:/var/lib/postgresql/data
     networks:
       my-net:
        aliases:
-        - db-jira
+        - db-jiras
 
 networks:
   my-net:
     external: true
-
 volumes:
-  postgresql-data:
-    name: postgresql-data
+  postgresql-data-servicemanagement:
+    name: postgresql-data-servicemanagement
   servicemanagement-vol:
     name: servicemanagement-vol
-
-
 
