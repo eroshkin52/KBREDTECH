@@ -37,16 +37,16 @@ services:
        aliases:
         - bamboo
     depends_on:
-      - postgressql-bamboo
+      - postgresql-bamboo
     ports:
       - 54663:54663
       - 8085:8085  
 
 
-  postgressql-bamboo:
+  postgresql-bamboo:
     image: postgres:13.6
     restart: always
-    container_name: postgressql-bamboo
+    container_name: postgresql-bamboo
     hostname: postgressql-bamboo
     environment:
       POSTGRES_USER: bamboo

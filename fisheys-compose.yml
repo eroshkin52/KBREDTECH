@@ -41,11 +41,11 @@ services:
     ports:
       - 8088:8080 
 
-  postgressql-fisheye:
+  postgresql-fisheye:
     image: postgres
     restart: always
-    container_name: postgressql-fisheye
-    hostname: postgressql-fisheye
+    container_name: postgresql-fisheye
+    hostname: postgresql-fisheye
     environment:
       POSTGRES_USER: fisheye
       POSTGRES_PASSWORD: 'PZz-0oOmnW#fgT:kc^7c'

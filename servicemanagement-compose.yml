@@ -10,7 +10,7 @@
 #   Need  "my-net" Network for Run this File
 #   docker network create --driver bridge --subnet=150.50.50.0/24 my-net
 
-version: "3.4"
+
 services:
   servicemanagement:
     image: atlassian/jira-servicemanagement:latest  
@@ -37,15 +37,15 @@ services:
     networks:
       my-net:
     depends_on:
-      - postgressql-jira
+      - postgresql-jira
     ports:
       - 8080:8080
 
-  postgressql-servicemanagement:
+  postgresql-servicemanagement:
     image: postgres
     restart: always
-    container_name: postgressql-servicemanagement
-    hostname: postgressql-servicemanagement
+    container_name: postgresql-servicemanagement
+    hostname: postgresql-servicemanagement
     environment:
       POSTGRES_USER: jira
       POSTGRES_PASSWORD: '0Ljp%j5x>ELVdt8V47L2'

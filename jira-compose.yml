@@ -36,15 +36,15 @@ services:
     networks:
       ronix-net:
     depends_on:
-      - postgressql-jira
+      - postgresql-jira
     ports:
       - 8081:8080
 
-  postgressql-jira:
+  postgresql-jira:
     image: postgres
     restart: always
-    container_name: postgressql-jira
-    hostname: postgressql-jira
+    container_name: postgresql-jira
+    hostname: postgresql-jira
     environment:
       POSTGRES_USER: jira
       POSTGRES_PASSWORD: 'DA.13jpj93%eBw_Q'
