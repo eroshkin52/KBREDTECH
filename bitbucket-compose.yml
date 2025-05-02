@@ -9,7 +9,6 @@
 #   Need  "my-net" Network for Run this File
 #   docker network create --driver bridge --subnet=150.50.50.0/24 my-net
 
-version: '3.4'
 services:
   bitbucket:
     image: "atlassian/bitbucket-server:latest"    

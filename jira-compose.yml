@@ -9,10 +9,9 @@
 #   Need  "my-net" Network for Run this File
 #   docker network create --driver bridge --subnet=150.50.50.0/24 my-net
 
-version: "3.4"
 services:
   jira:
-    image: atlassian/jira-software:latest
+    image: atlassian/jira-software:8.22.2
     restart: always
     container_name: jira
     hostname: jira
